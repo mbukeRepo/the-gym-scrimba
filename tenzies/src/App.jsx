@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import Die from "../components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 
 const App = () => {
-  const [dice, setDice] = React.useState(allNewDice());
-  const [tenzies, setTenzies] = React.useState(false);
+  const [dice, setDice] = useState(() => allNewDice());
+  const [tenzies, setTenzies] = useState(false);
 
   useEffect(() => {
     const allHeld = dice.every((item) => item.isHeld);
