@@ -4,11 +4,9 @@ In this simple react project I implemented a notes app with a markdown editor th
 
 | package                                                                          | description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| react-mde                                                                        | A simple yet powerful and extensible React Markdown Editor                       |
-|  that aims to have feature parity with the Github Markdown editor.               |
+| react-mde                                                                        | A simple yet powerful and extensible React Markdown Editor                         that aims to have feature parity with the Github Markdown editor.               |
 | react-showdown                                                                   | This give us access to converter object which react-mde use to generate preview. |
-| react-split                                                                      | providing  <Split />                                                             |
-|  component wraps multiple children components to create a resizeable split view. |
+| react-split                                                                      | providing  <Split />                                                               component wraps multiple children components to create a resizeable split view. |
 | nanoid                                                                           | A tiny, secure, URL-friendly, unique string ID generator for JavaScript.         |
 
 In this app we have three main components that holds all the functionality.
