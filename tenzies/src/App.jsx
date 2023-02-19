@@ -4,6 +4,20 @@ import Die from "../components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 
+const generateNewDie = () => ({
+  value: Math.floor(Math.random() * 6) + 1,
+  isHeld: false,
+  id: nanoid(),
+});
+
+const allNewDice = () => {
+  const dieArray = [];
+  for (let i = 0; i < 10; i++) {
+    dieArray.push(generateNewDie());
+  }
+  return dieArray;
+};
+
 const App = () => {
   const [dice, setDice] = useState(() => allNewDice());
   const [tenzies, setTenzies] = useState(false);
@@ -16,23 +30,6 @@ const App = () => {
       setTenzies(true);
     }
   }, [dice]);
-
-  const generateNewDie = useCallback(
-    () => ({
-      value: Math.floor(Math.random() * 6) + 1,
-      isHeld: false,
-      id: nanoid(),
-    }),
-    []
-  );
-
-  const allNewDice = useCallback(() => {
-    const dieArray = [];
-    for (let i = 0; i < 10; i++) {
-      dieArray.push(generateNewDie());
-    }
-    return dieArray;
-  }, []);
 
   const rollDice = useCallback(() => {
     if (!tenzies) {
