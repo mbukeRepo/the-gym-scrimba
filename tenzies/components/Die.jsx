@@ -1,3 +1,4 @@
+import { memo } from "react";
 const Die = ({ isHeld, holdDice, value }) => {
   const styles = {
     backgroundColor: isHeld ? "#59E391" : "#FFFFFF",
@@ -10,4 +11,4 @@ const Die = ({ isHeld, holdDice, value }) => {
   );
 };
 
-export default React.memo(Die);
+export default memo(Die);
