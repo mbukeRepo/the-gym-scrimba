@@ -1,9 +1,4 @@
-# What is Quizzical
-
-This is the final solo project of the _Scrimba Frontend Career Path_ Course.
-
-I used all my knowledge of HTML, CSS, JavaScript, and React to create this quiz app.
-
+# Quizzical
 ## Features of the quiz app
 
 - Home page/quiz page
