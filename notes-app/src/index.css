@@ -119,7 +119,7 @@ button:focus {
   cursor: pointer;
   background-color: #4a4e74;
   border: none;
-  color: black;
+  color: white;
   border-radius: 3px;
   padding: 1rem;
 }
