@@ -1,6 +1,6 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { memo } from "react";
 
 const Sidebar = ({
   notes,
@@ -25,7 +25,6 @@ const Sidebar = ({
       </div>
     </div>
   ));
-
   return (
     <section className="pane sidebar dark">
       <div className="sidebar--header">
@@ -39,4 +38,4 @@ const Sidebar = ({
   );
 };
 
-export default React.memo(Sidebar);
+export default memo(Sidebar);

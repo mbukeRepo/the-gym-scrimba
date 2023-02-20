@@ -1,9 +1,5 @@
-import React from 'react'
-
 const Avatarbar = () => {
-    return (
-        <div>Avatarbar</div>
-    )
-}
+  return <div>Avatarbar</div>;
+};
 
-export default Avatarbar
+export default Avatarbar;

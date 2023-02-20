@@ -51,7 +51,6 @@ const App = () => {
       }) || notes[0]
     );
   }, [currentNoteId, notes]);
-
   return (
     <div className="App dark">
       <main>
