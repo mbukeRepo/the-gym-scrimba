@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-import React, { useCallback, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import PropTypes from "prop-types";
 import { THEME } from "../constant.js";
 import SettingsIcons from "./SettingsIcons.js";
@@ -17,13 +17,13 @@ Home.propTypes = {
   isHome: PropTypes.bool,
 };
 
-export default function Home({
+const Home = ({
   toggleIsHome,
   formData,
   handleFormChange,
   theme,
   toggleTheme,
-}) {
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const customTheme = THEME[theme];
 
@@ -119,4 +119,5 @@ export default function Home({
       <img className="blueBlob" src={blueBlob} alt="" />
     </div>
   );
-}
+};
+export default memo(Home);

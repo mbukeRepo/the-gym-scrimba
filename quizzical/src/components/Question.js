@@ -1,6 +1,5 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable react/prop-types */
-import React from "react";
 import PropTypes from "prop-types";
 import { nanoid } from "nanoid";
 import he from "he";
@@ -49,8 +48,7 @@ const Question = ({ allAnswers, qID, question, isShowAnswers, updateHeld }) => {
         {he.decode(allAnswers[index].value)}
       </button>
     );
-  }); // end of answerButtonsJSX
-
+  });
   return (
     <div className="question__component">
       <h3 className="question__question">{he.decode(question)}</h3>
@@ -67,4 +65,4 @@ Question.propTypes = {
   updateHeld: PropTypes.func,
 };
 
-export default React.memo(Question);
+export default memo(Question);
