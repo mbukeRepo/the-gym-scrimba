@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, memo, useRef } from "react";
 import { toPng } from "html-to-image";
 import download from "downloadjs";
 import Draggable from "react-draggable";
@@ -10,6 +10,7 @@ const Meme = () => {
     randomImage: "http://i.imgflip.com/28j0te.jpg",
   });
   const [allMemes, setAllMemes] = useState([]);
+  const node = useRef();
 
   useEffect(() => {
     const getMemes = async () => {
@@ -45,9 +46,8 @@ const Meme = () => {
     }));
   };
 
-  const node = document.getElementById("meme-img");
   const downloadImage = () => {
-    toPng(node)
+    toPng(node.current)
       .then((dataURL) => {
         download(dataURL, "meme.png");
       })
@@ -80,7 +80,7 @@ const Meme = () => {
           Clear Text
         </button>
       </div>
-      <div className="meme" id="meme-img">
+      <div className="meme" ref={node} id="meme-img">
         <img
           src={meme.randomImage}
           alt="suppose its a meme image"
