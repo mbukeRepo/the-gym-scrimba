@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Quiz from "./components/Quiz";
 import Home from "./components/Home";
 import "./styles.css";
