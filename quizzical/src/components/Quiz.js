@@ -1,13 +1,14 @@
 /* eslint-disable linebreak-style */
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
+
 import { THEME } from "../constant.js";
 import { nanoid } from "nanoid";
 import Question from "./Question";
 import SettingsIcons from "./SettingsIcons.js";
 import blueBlob from "../images/blueBlob.png";
 import yellowBlob from "../images/yellowBlob.png";
-import axios from "axios";
 
 const Quiz = ({ toggleIsHome, formData, theme, toggleTheme }) => {
   const [quizData, setQuizData] = useState([]);
@@ -84,8 +85,6 @@ const Quiz = ({ toggleIsHome, formData, theme, toggleTheme }) => {
     }
   }, [isShowAnswers, quizData]);
 
-  // qId and aID match the correct answer and update held
-  // aID is made in Question.js with .map(_, _.id)
   const updateHeld = useCallback((qID, aID) => {
     setQuizData((prevQuizData) => {
       return prevQuizData.map((question) => {
@@ -103,21 +102,24 @@ const Quiz = ({ toggleIsHome, formData, theme, toggleTheme }) => {
       });
     });
   }, []);
+
   const checkAnswers = useCallback(() => {
     setIsShowAnswers(true);
   }, []);
-  /* Snap scrolling on play again */
+
   const goToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
       behavior: window.innerWidth > 600 ? "auto" : "smooth",
     });
   }, []);
+
   const reset = useCallback(() => {
     setIsShowAnswers(false);
     setResetQuiz((prev) => prev + 1);
     goToTop();
   }, []);
+
   const questionElements = quizData.map((question, index) => {
     return (
       <Question
@@ -190,4 +192,4 @@ Quiz.propTypes = {
   toggleTheme: PropTypes.func,
 };
 
-export default React.memo(Quiz);
+export default memo(Quiz);

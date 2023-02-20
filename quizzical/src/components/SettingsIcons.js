@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-import React from "react";
+import { memo } from "react";
 import PropTypes from "prop-types";
 import {
   Home as HomeIcon,
@@ -39,4 +39,4 @@ SettingsIcons.propTypes = {
   showHomeIcon: PropTypes.bool,
 };
 
-export default React.memo(SettingsIcons);
+export default memo(SettingsIcons);

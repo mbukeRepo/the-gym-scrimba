@@ -16,15 +16,14 @@ const App = () => {
     amountOfQuestions: "5",
   });
 
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+  useEffect(() => localStorage.setItem("theme", theme), [theme]);
 
   const toggleIsHome = useCallback(() => setIsHome((prev) => !prev), []);
 
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  }, []);
+  const toggleTheme = useCallback(
+    () => setTheme((prev) => (prev === "light" ? "dark" : "light")),
+    []
+  );
 
   const handleFormChange = useCallback((e) => {
     const { name, value } = e.target;
