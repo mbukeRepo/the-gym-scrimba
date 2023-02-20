@@ -1,9 +1,9 @@
-import React from "react";
+import { memo, useState } from "react";
 import ReactMde from "react-mde";
 import Showdown from "showdown";
 
 const Editor = ({ currentNote, updateNote }) => {
-  const [selectedTab, setSelectedTab] = React.useState("write");
+  const [selectedTab, setSelectedTab] = useState("write");
   const converter = new Showdown.Converter({
     tables: true,
     simplifiedAutoLink: true,
@@ -28,4 +28,4 @@ const Editor = ({ currentNote, updateNote }) => {
   );
 };
 
-export default React.memo(Editor);
+export default memo(Editor);
