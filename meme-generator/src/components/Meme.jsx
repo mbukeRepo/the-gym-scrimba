@@ -1,58 +1,58 @@
-import React from "react";
+import { useState, useEffect, memo, useRef } from "react";
 import { toPng } from "html-to-image";
 import download from "downloadjs";
 import Draggable from "react-draggable";
 
-export default function Meme() {
-  const [meme, setMeme] = React.useState({
+const Meme = () => {
+  const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
     randomImage: "http://i.imgflip.com/28j0te.jpg",
   });
-  const [allMemes, setAllMemes] = React.useState([]);
+  const [allMemes, setAllMemes] = useState([]);
+  const node = useRef();
 
-  React.useEffect(() => {
-    async function getMemes() {
+  useEffect(() => {
+    const getMemes = async () => {
       const res = await fetch("https://api.imgflip.com/get_memes");
       const data = await res.json();
       setAllMemes(data.data.memes);
-    }
+    };
     getMemes();
   }, []);
 
-  function getMemeImage() {
+  const getMemeImage = () => {
     const randomNumber = Math.floor(Math.random() * allMemes.length);
     const url = allMemes[randomNumber].url;
     setMeme((prevMeme) => ({
       ...prevMeme,
       randomImage: url,
     }));
-  }
+  };
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setMeme((prevMeme) => ({
       ...prevMeme,
       [name]: value,
     }));
-  }
+  };
 
-  function clearInput() {
+  const clearInput = () => {
     setMeme((prevMeme) => ({
       ...prevMeme,
       topText: "",
       bottomText: "",
     }));
-  }
+  };
 
-  const node = document.getElementById("meme-img");
-  function downloadImage() {
-    toPng(node)
+  const downloadImage = () => {
+    toPng(node.current)
       .then((dataURL) => {
         download(dataURL, "meme.png");
       })
       .catch(() => console.log("error occured"));
-  }
+  };
 
   return (
     <main>
@@ -80,7 +80,7 @@ export default function Meme() {
           Clear Text
         </button>
       </div>
-      <div className="meme" id="meme-img">
+      <div className="meme" ref={node} id="meme-img">
         <img
           src={meme.randomImage}
           alt="suppose its a meme image"
@@ -100,4 +100,5 @@ export default function Meme() {
       </div>
     </main>
   );
-}
+};
+export default memo(Meme);
