@@ -1,22 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import Die from "../components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
-
-const generateNewDie = () => ({
-  value: Math.floor(Math.random() * 6) + 1,
-  isHeld: false,
-  id: nanoid(),
-});
-
-const allNewDice = () => {
-  const dieArray = [];
-  for (let i = 0; i < 10; i++) {
-    dieArray.push(generateNewDie());
-  }
-  return dieArray;
-};
+import { allNewDice, updateDice } from "./utils";
 
 const App = () => {
   const [dice, setDice] = useState(() => allNewDice());
@@ -33,11 +20,7 @@ const App = () => {
 
   const rollDice = useCallback(() => {
     if (!tenzies) {
-      setDice((oldDice) =>
-        oldDice.map((item) => {
-          return item.isHeld ? item : generateNewDie();
-        })
-      );
+      setDice((oldDice) => updateDice(oldDice));
     } else {
       setTenzies(false);
       setDice(allNewDice());
